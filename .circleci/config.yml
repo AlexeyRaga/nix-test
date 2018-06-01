@@ -5,13 +5,13 @@ jobs:
     docker:
       - image: quay.io/haskell_works/stack-build-python:latest
 
-  steps:
-      - checkout
-      - run: git fetch --unshallow || true
+    steps:
+        - checkout
+        - run: git fetch --unshallow || true
 
-      - run: curl https://nixos.org/nix/install | sh
-      - run: source ~/.nix-profile/etc/profile.d/nix.sh
+        - run: curl https://nixos.org/nix/install | sh
+        - run: source ~/.nix-profile/etc/profile.d/nix.sh
 
-      - run: stack setup
+        - run: stack setup
 
-      - run: stack build
+        - run: stack build
