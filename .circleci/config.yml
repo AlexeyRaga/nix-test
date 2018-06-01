@@ -1,0 +1,17 @@
+version: 2.0
+jobs:
+  build:
+    working_directory: ~/build
+    docker:
+      - image: quay.io/haskell_works/stack-build-python:latest
+
+  steps:
+      - checkout
+      - run: git fetch --unshallow || true
+
+      - run: curl https://nixos.org/nix/install | sh
+      - run: source ~/.nix-profile/etc/profile.d/nix.sh
+
+      - run: stack setup
+
+      - run: stack build
